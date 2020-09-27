@@ -43,18 +43,16 @@ class PlayWindow(tk.Frame):
         self.seconds = 0
         self.minutes = 0
 
-        def refresh():
-            self.winfo_toplevel().destroy()
-            main()
-
         def announce_win():
             self.is_window_blocked = True
             play_again = tk, messagebox.askyesno(message=f'Congratulations, you did it in {self.minutes}:{self.seconds}! Do you want to play again?',
                                                  title='Congrats!')
             if play_again:
-                refresh()
-            else:
                 self.destroy()
+                game = PlayWindow(self.parent, False, sudoku)
+                game.grid()
+            else:
+                return_to_menu()
 
         def update_time():
             if not self.is_window_blocked:
