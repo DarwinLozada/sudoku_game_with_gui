@@ -29,7 +29,7 @@ class MenuWindow(tk.Frame):
         self.bg_color = '#363747'
         self.parent = parent
         self.config(bg=self.bg_color)
-
+        
         def enter_to_label(label):
             if label == 'play':
                 self.play_label.config(image=self.play_button_cursor_on_image)
@@ -128,4 +128,6 @@ class MenuWindow(tk.Frame):
     def start_game(self):
         self.destroy()
         game = PlayWindow(self.parent, True)
-        game.grid()
+        game.grid(sticky='NSEW')
+       
+
